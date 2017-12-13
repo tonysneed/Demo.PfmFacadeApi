@@ -1,5 +1,5 @@
-﻿using CppeDb.DataAccess.Models;
-using Microsoft.OData.Edm;
+﻿using Microsoft.OData.Edm;
+using PfmFacadeApi.Models.Pfm;
 using System.Web.Http;
 using System.Web.OData.Batch;
 using System.Web.OData.Builder;
@@ -20,7 +20,12 @@ namespace PfmFacadeApi
             ODataConventionModelBuilder builder = new ODataConventionModelBuilder();
             builder.Namespace = "PfmFacadeApi";
             builder.ContainerName = "DefaultContainer";
-            builder.EntitySet<ForecastWellRisk>("ForecastWellRisk");
+
+            var forecastWellRisk = builder.EntitySet<ForecastWellRisk>(nameof(ForecastWellRisk));
+            forecastWellRisk.EntityType.Property(e => e.Foo).AddedExplicitly = true;
+            var bar = builder.EntitySet<Bar>(nameof(Bar));
+            bar.EntityType.Property(e => e.Stuff).AddedExplicitly = true;
+
             var edmModel = builder.GetEdmModel();
             return edmModel;
         }

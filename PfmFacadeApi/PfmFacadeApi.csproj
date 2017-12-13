@@ -62,9 +62,6 @@
     <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.Abstractions.1.0.0\lib\netstandard1.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.OData.Client, Version=6.19.0.11114, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.OData.Client.6.19.0\lib\net40\Microsoft.OData.Client.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.OData.Core, Version=6.19.0.11114, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.OData.Core.6.19.0\lib\portable-net45+win+wpa81\Microsoft.OData.Core.dll</HintPath>
     </Reference>
@@ -77,6 +74,7 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -172,6 +170,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Extended\Bar.cs" />
+    <Compile Include="Extended\ForecastWellRiskEx.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -206,35 +206,35 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\ForecastWellRiskController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Data\DataSources.cs" />
-    <Compile Include="Models\DecimalPrecisionAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Forecast.cs" />
-    <Compile Include="Models\ForecastDeclineCurveType.cs" />
-    <Compile Include="Models\ForecastDeclineType.cs" />
-    <Compile Include="Models\ForecastDurationOuomType.cs" />
-    <Compile Include="Models\ForecastGlobalRisk.cs" />
-    <Compile Include="Models\ForecastHorizontal.cs" />
-    <Compile Include="Models\ForecastHorizontalBase.cs" />
-    <Compile Include="Models\ForecastHorizontalBaseDetail.cs" />
-    <Compile Include="Models\ForecastHorizontalDetail.cs" />
-    <Compile Include="Models\ForecastParameter.cs" />
-    <Compile Include="Models\ForecastParameterDetail.cs" />
-    <Compile Include="Models\ForecastParemeterProductType.cs" />
-    <Compile Include="Models\ForecastRatioCurveType.cs" />
-    <Compile Include="Models\ForecastRatioFluidType.cs" />
-    <Compile Include="Models\ForecastRatioVolumeOuomType.cs" />
-    <Compile Include="Models\ForecastSeasonalRisk.cs" />
-    <Compile Include="Models\ForecastSegmentType.cs" />
-    <Compile Include="Models\ForecastType.cs" />
-    <Compile Include="Models\ForecastVertical.cs" />
-    <Compile Include="Models\ForecastVerticalDetail.cs" />
-    <Compile Include="Models\ForecastWellRisk.cs" />
-    <Compile Include="Models\ScenarioWell.cs" />
-    <Compile Include="Models\Well.cs" />
+    <Compile Include="Models\Cppe\ScenarioWell.cs" />
+    <Compile Include="Models\Pfm\Forecast.cs" />
+    <Compile Include="Models\Pfm\ForecastDeclineCurveType.cs" />
+    <Compile Include="Models\Pfm\ForecastDeclineType.cs" />
+    <Compile Include="Models\Pfm\ForecastDurationOuomType.cs" />
+    <Compile Include="Models\Pfm\ForecastGlobalRisk.cs" />
+    <Compile Include="Models\Pfm\ForecastHorizontal.cs" />
+    <Compile Include="Models\Pfm\ForecastHorizontalBase.cs" />
+    <Compile Include="Models\Pfm\ForecastHorizontalBaseDetail.cs" />
+    <Compile Include="Models\Pfm\ForecastHorizontalDetail.cs" />
+    <Compile Include="Models\Pfm\ForecastParameter.cs" />
+    <Compile Include="Models\Pfm\ForecastParameterDetail.cs" />
+    <Compile Include="Models\Pfm\ForecastParemeterProductType.cs" />
+    <Compile Include="Models\Pfm\ForecastRatioCurveType.cs" />
+    <Compile Include="Models\Pfm\ForecastRatioFluidType.cs" />
+    <Compile Include="Models\Pfm\ForecastRatioVolumeOuomType.cs" />
+    <Compile Include="Models\Pfm\ForecastSeasonalRisk.cs" />
+    <Compile Include="Models\Pfm\ForecastSegmentType.cs" />
+    <Compile Include="Models\Pfm\ForecastType.cs" />
+    <Compile Include="Models\Pfm\ForecastVertical.cs" />
+    <Compile Include="Models\Pfm\ForecastVerticalDetail.cs" />
+    <Compile Include="Models\Pfm\ForecastWellRisk.cs" />
+    <Compile Include="Models\Pfm\PfmDb.cs" />
+    <Compile Include="Models\Pfm\TypeCurveRisking.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utilities\ODataResponse.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />
@@ -303,6 +303,9 @@
   <ItemGroup>
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
